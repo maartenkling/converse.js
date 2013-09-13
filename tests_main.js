@@ -14,6 +14,8 @@ require.config({
         "strophe.disco": "components/strophe.disco/index",
         "crypto.aes": "components/crypto-js/build/rollups/aes",
         // Extra test dependencies
+        "mock": "tests/mock",
+        "utils": "tests/utils",
         "jasmine": "components/jasmine/lib/jasmine-core/jasmine",
         "jasmine-html": "components/jasmine/lib/jasmine-core/jasmine-html",
         "jasmine-console-reporter": "node_modules/jasmine-reporters/src/jasmine.console_reporter",
@@ -61,7 +63,7 @@ require([
     "converse",
     "mock",
     "jasmine-html"
-    ], function($, converse, mock_connection, jasmine) {
+    ], function($, converse, mock, jasmine) {
         // Set up converse.js
         window.localStorage.clear();
         converse.initialize({
@@ -69,14 +71,15 @@ require([
             xhr_user_search: false,
             auto_subscribe: false,
             animate: false,
-            connection: mock_connection,
+            connection: mock.mock_connection,
             testing: true
         }, function (converse) {
             window.converse = converse;
             require([
                 "jasmine-console-reporter",
                 "jasmine-junit-reporter",
-                "spec/MainSpec",
+                "spec/ControlBoxSpec",
+                "spec/ChatBoxSpec",
                 "spec/ChatRoomSpec"
             ], function () {
                 // Jasmine stuff

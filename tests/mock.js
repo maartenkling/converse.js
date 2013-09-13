@@ -5,7 +5,24 @@
             return factory();
         });
 }(this, function (converse) {
-    var mock_connection = {
+    var mock = {};
+
+    // Names from http://www.fakenamegenerator.com/
+    mock.req_names = [
+        'Louw Spekman', 'Mohamad Stet', 'Dominik Beyer'
+    ];
+    mock.pend_names = [
+        'Suleyman van Beusichem', 'Nanja van Yperen', 'Nicole Diederich'
+    ];
+    mock.cur_names = [
+        'Max Frankfurter', 'Candice van der Knijff', 'Irini Vlastuin', 'Rinse Sommer', 'Annegreet Gomez',
+        'Robin Schook', 'Marcel Eberhardt', 'Simone Brauer', 'Asmaa Haakman', 'Felix Amsel',
+        'Lena Grunewald', 'Laura Grunewald', 'Mandy Seiler', 'Sven Bosch', 'Nuriye Cuypers'
+    ];
+
+    mock.num_contacts = mock.req_names.length + mock.pend_names.length + mock.cur_names.length;
+
+    mock.mock_connection = {
         'muc': {
             'listRooms': function () {},
             'join': function () {},
@@ -48,5 +65,5 @@
             'items': function () {}
         }
     };
-    return mock_connection;
+    return mock;
 }));

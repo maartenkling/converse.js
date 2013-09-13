@@ -1,18 +1,17 @@
 (function (root, factory) {
     define([
-        "mock"
-        ], function (mock_connection) {
-            return factory(mock_connection);
+        "mock",
+        "utils"
+        ], function (mock, utils) {
+            return factory(mock, utils);
         }
     );
-} (this, function (mock_connection) {
+} (this, function (mock, utils) {
     return describe("ChatRooms", $.proxy(function() {
         var chatroom_names = [
             'Dyon van de Wege', 'Thomas Kalb', 'Dirk Theissen', 'Felix Hofmann', 'Ka Lek', 'Anne Ebersbacher'
         ];
-        closeChatRoom = function (name) {
-            converse.chatboxesview.views['lounge@muc.localhost'].closeChat();
-        };
+        window.localStorage.clear();
 
         describe("A Chat Room", $.proxy(function () {
             beforeEach($.proxy(function () {
@@ -266,6 +265,8 @@
                 spyOn(view, 'showErrorMessage').andCallThrough();
                 view.onChatRoomPresence(presence, {'nick': 'dummy'});
                 expect(view.$el.find('.chat-body p').text()).toBe("This room has reached it's maximum number of occupants");
+                // XXX: See if closeChat can be used here.
+                view.$el.remove();
             }, converse));
         }, converse));
     }, converse));
