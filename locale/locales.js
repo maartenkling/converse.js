@@ -11,6 +11,7 @@
             "jed": "components/jed/jed",
             "af": "locale/af/LC_MESSAGES/af",
             "de": "locale/de/LC_MESSAGES/de",
+            "nl": "locale/nl/LC_MESSAGES/nl",
             "en": "locale/en/LC_MESSAGES/en",
             "es": "locale/es/LC_MESSAGES/es",
             "fr": "locale/fr/LC_MESSAGES/fr",
@@ -25,6 +26,7 @@
         'jed',
         'af',
         'de',
+        'nl',
         'en',
         'es',
         'fr',
@@ -32,10 +34,11 @@
         'it',
         'pt_BR',
         'ru'
-        ], function (jed, af, de, en, es, fr, hu, it, pt_BR, ru) {
+        ], function (jed, af, de, nl, en, es, fr, hu, it, pt_BR, ru) {
             root.locales = {
                 'af': af,
                 'de': de,
+                'nl': nl,
                 'en': en,
                 'es': es,
                 'fr': fr,
